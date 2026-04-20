@@ -1,0 +1,8 @@
+{
+  "state_machine": {
+    "window_seconds": 10.0,
+    "min_confidence": 0.5,
+    "suspect_count": 2,
+    "alarm_count": 3
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "nvr": {
+    "name": "mp4-local-demo",
+    "loop": false,
+    "cameras": [
+      {
+        "camera_id": "cam_001",
+        "display_name": "Demo compartment camera",
+        "zone_type": "ship_like_internal",
+        "mp4_source_path": "01_raw/02_shiplike/DVIDS/clips/example.mp4",
+        "enabled": false,
+        "fps_hint": 15.0
+      }
+    ]
+  }
+}

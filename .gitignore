@@ -1,0 +1,74 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Local secrets and account material
+.env
+.env.*
+*.secret
+*.secrets
+*secrets*.json
+configs/*.local.json
+00_admin/accounts/**/*
+!00_admin/accounts/**/
+!00_admin/accounts/**/.gitkeep
+
+# Raw datasets and downloaded/extracted public media
+01_raw/**/*
+!01_raw/**/
+!01_raw/**/.gitkeep
+
+# Generated processed data
+02_processed/frames/**/*
+02_processed/labels/**/*
+02_processed/synth_v1/**/*
+02_processed/hard_negative_v1/**/*
+!02_processed/frames/**/
+!02_processed/labels/**/
+!02_processed/synth_v1/**/
+!02_processed/hard_negative_v1/**/
+!02_processed/frames/**/.gitkeep
+!02_processed/labels/**/.gitkeep
+!02_processed/synth_v1/**/.gitkeep
+!02_processed/hard_negative_v1/**/.gitkeep
+
+# Experiments, models, logs, and generated reports
+03_experiments/**/*
+!03_experiments/**/
+!03_experiments/**/.gitkeep
+
+# Large or local binary artifacts
+*.hwp
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wmv
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tif
+*.tiff
+*.onnx
+*.pt
+*.pth
+*.engine
+*.log
+*.sqlite
+*.sqlite3
+*.db
+
+# Keep repository placeholders
+!.gitkeep

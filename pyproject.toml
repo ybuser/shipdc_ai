@@ -1,0 +1,10 @@
+[project]
+name = "shipdc-ai"
+version = "0.1.0"
+description = "Windows-native public-data-only scaffold for ship-like CCTV fire and smoke research."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.unittest]
+start-directory = "tests"

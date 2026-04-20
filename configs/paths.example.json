@@ -1,0 +1,8 @@
+{
+  "project_root": ".",
+  "raw_root": "01_raw",
+  "processed_root": "02_processed",
+  "manifest_path": "02_processed/manifests/master_manifest.csv",
+  "experiment_root": "03_experiments",
+  "paper_root": "04_papers"
+}
