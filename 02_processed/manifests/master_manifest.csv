@@ -1,1 +1,6 @@
 asset_id,source_group,source_name,source_url,download_date,local_path,asset_type,license_or_rights,zone_type,confuser_tag,use_purpose,sha256,notes
+ADMIN_001,admin,Seminar_Poster,local_user_upload,2026-04-07,00_admin/seminar_docs/call_poster_2026.jpg,doc,user_provided,,,seminar_admin,,2026 seminar poster
+ADMIN_002,admin,Paper_Template,local_user_upload,2026-04-07,00_admin/seminar_docs/paper_template_2026.hwp,doc,user_provided,,,seminar_admin,,official paper template
+ADMIN_003,admin,Application_Form,local_user_upload,2026-04-07,00_admin/seminar_docs/application_form_2026.hwp,doc,user_provided,,,seminar_admin,,official application form
+DONOR_DFIRE_001,donor,DFire,https://github.com/gaia-solutions-on-demand/DFireDataset,2026-04-20,01_raw/01_donor/DFire/downloads/dfire_images_labels_src.zip,zip,CC0 1.0 Universal,,,donor_train,3824fb3ce32cfa8b538792dfd460603648d271072ac6ae34f1af0c713f60260c,Official D-Fire images and YOLO labels archive
+DONOR_DFIRE_002,donor,DFire,https://github.com/gaia-solutions-on-demand/DFireDataset,2026-04-20,01_raw/01_donor/DFire/downloads/dfire_splits_src.zip,zip,CC0 1.0 Universal,,,donor_train,a11a13e7e1c82960b85cf8e6ea5d2197e428c65ba8a1c6bd3ddd17325cc37108,Official D-Fire train validation test split archive
