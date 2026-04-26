@@ -1,0 +1,15 @@
+Dataset: MS-FSDB
+Official public source checked:
+- GitHub repository with Google Drive link
+Issue:
+- The Google Drive link referenced by the public repository is unavailable/broken.
+- No trustworthy alternative public mirror was adopted.
+Decision:
+- Exclude MS-FSDB from the seminar-phase core data stack.
+- Replace its intended role with:
+  1) D-Fire none/background images
+  2) FIRESENSE negative videos
+  3) ship-like hard negatives from DVIDS/NOAA
+  4) additional positive donor data from Indoor Fire Smoke and CQU Fire-Smoke YOLO dataset
+Notes:
+- Do not block the seminar schedule for this dataset.
