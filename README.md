@@ -4,7 +4,7 @@ Public-data-only research scaffold for a ship-like multi-CCTV fire and smoke ear
 
 ## Current Phase
 
-This repository is in scaffold-only mode. It contains directory layout, manifest tooling, documentation, and lightweight Python stubs. It does not contain datasets, trained models, GPU code, camera integrations, or heavy ML dependencies.
+This repository is in lightweight tooling and data-index mode. It contains directory layout, manifest tooling, documentation, lightweight Python stubs, and a master manifest that may list locally acquired public assets. Git-tracked contents do not include raw datasets, trained models, GPU code, camera integrations, or heavy ML dependencies.
 
 ## Non-Negotiable Constraints
 
@@ -35,9 +35,9 @@ python -m unittest discover tests
 
 ## Data Policy
 
-Raw data stays local and outside Git history. Downloaded archives, extracted media, generated frames, synthetic data, ONNX artifacts, logs, and experiment outputs are ignored by default. Only the directory placeholders, documentation, source code, configs, and manifest template belong in Git at this phase.
+Raw data stays local and outside Git history. Downloaded archives, extracted media, generated frames, synthetic data, ONNX artifacts, logs, and experiment outputs are ignored by default. Only the directory placeholders, documentation, source code, configs, and manifest files belong in Git at this phase.
 
-Every future external asset should be recorded in `02_processed/manifests/master_manifest.csv` with its source, local path, purpose, rights note, and SHA256 hash when available.
+Every public external asset used for this project should be recorded in `02_processed/manifests/master_manifest.csv` with its source, local path, purpose, rights note, and SHA256 hash when available.
 
 ## Next Steps
 
