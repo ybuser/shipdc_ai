@@ -1,0 +1,6 @@
+﻿split,frames,asset_count,with_human_frames,use_purpose_summary
+train,103,1,0,synth_background:85; background_train:18
+val,29,1,4,background_val:29
+test,127,5,117,hard_negative_eval:127
+qualitative,0,0,0,
+exclude,533,8,4,exclude:533

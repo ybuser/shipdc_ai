@@ -1,0 +1,83 @@
+input_rows: 792
+output_rows: 792
+usable_non_exclude_rows: 259
+with_human_rows_total: 125
+with_human_rows_usable: 121
+
+[source_name]
+DVIDS: 738
+NOAA: 54
+
+[asset_id]
+SHIP_DVIDS_001: 216
+SHIP_DVIDS_003: 216
+SHIP_DVIDS_002: 131
+SHIP_DVIDS_004: 112
+SHIP_DVIDS_006: 62
+SHIP_NOAA_001: 50
+SHIP_DVIDS_005: 1
+SHIP_NOAA_002: 1
+SHIP_NOAA_003: 1
+SHIP_NOAA_004: 1
+SHIP_NOAA_006: 1
+
+[zone_l1]
+exterior_or_unknown: 525
+engine_room: 146
+control_room: 85
+service_maintenance_support: 29
+passageway_ladder: 7
+
+[confuser_tags]
+none: 757
+red_valve: 11
+red_machine: 10
+red_wall: 7
+red_clothes: 3
+red_text: 1
+red_button: 1
+monitor: 1
+red_light: 1
+
+[use_purpose]
+exclude: 533
+hard_negative_eval: 127
+synth_background: 85
+background_val: 29
+background_train: 18
+
+[split]
+exclude: 533
+test: 127
+train: 103
+val: 29
+
+[quality_flag]
+exclude: 533
+good: 259
+
+[usable by asset]
+SHIP_DVIDS_001: rows=103, split=Counter({'train': 103}), purpose=Counter({'synth_background': 85, 'background_train': 18}), zone=Counter({'engine_room': 103}), conf=Counter({'none': 85, 'red_valve': 11, 'red_machine': 7}), with_human=0
+SHIP_DVIDS_002: rows=29, split=Counter({'val': 29}), purpose=Counter({'background_val': 29}), zone=Counter({'control_room': 27, 'exterior_or_unknown': 2}), conf=Counter({'none': 29}), with_human=4
+SHIP_DVIDS_003: rows=107, split=Counter({'test': 107}), purpose=Counter({'hard_negative_eval': 107}), zone=Counter({'control_room': 40, 'engine_room': 27, 'service_maintenance_support': 26, 'exterior_or_unknown': 9, 'passageway_ladder': 5}), conf=Counter({'none': 97, 'red_wall': 7, 'red_clothes': 3}), with_human=105
+SHIP_NOAA_001: rows=17, split=Counter({'test': 17}), purpose=Counter({'hard_negative_eval': 17}), zone=Counter({'control_room': 13, 'exterior_or_unknown': 4}), conf=Counter({'none': 14, 'red_machine': 2, 'red_button': 1}), with_human=10
+SHIP_NOAA_002: rows=1, split=Counter({'test': 1}), purpose=Counter({'hard_negative_eval': 1}), zone=Counter({'control_room': 1}), conf=Counter({'monitor': 1}), with_human=1
+SHIP_NOAA_003: rows=1, split=Counter({'test': 1}), purpose=Counter({'hard_negative_eval': 1}), zone=Counter({'control_room': 1}), conf=Counter({'red_light': 1}), with_human=0
+SHIP_NOAA_004: rows=1, split=Counter({'test': 1}), purpose=Counter({'hard_negative_eval': 1}), zone=Counter({'engine_room': 1}), conf=Counter({'red_machine': 1}), with_human=1
+
+[confuser tokens split=train]
+none: 85
+red_valve: 11
+red_machine: 7
+
+[confuser tokens split=val]
+none: 29
+
+[confuser tokens split=test]
+none: 111
+red_wall: 7
+red_clothes: 3
+red_machine: 3
+red_button: 1
+monitor: 1
+red_light: 1

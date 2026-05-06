@@ -1,0 +1,19 @@
+공개자료 기반 ship-like keyframe bank 요약
+- 전체 keyframe row: 792
+- usable non-exclude frame: 259
+- 전체 asset 수: 11
+- usable asset 수: 7
+- with_human frame 수: 전체 125, usable 121
+- split: exclude:533; train:103; val:29; test:127
+- use_purpose: exclude:533; synth_background:85; background_train:18; background_val:29; hard_negative_eval:127
+
+[usable by asset]
+- SHIP_DVIDS_001: 103 frames, split=Counter({'train': 103}), use=Counter({'synth_background': 85, 'background_train': 18}), with_human=0
+- SHIP_DVIDS_002: 29 frames, split=Counter({'val': 29}), use=Counter({'background_val': 29}), with_human=4
+- SHIP_DVIDS_003: 107 frames, split=Counter({'test': 107}), use=Counter({'hard_negative_eval': 107}), with_human=105
+- SHIP_NOAA_001: 17 frames, split=Counter({'test': 17}), use=Counter({'hard_negative_eval': 17}), with_human=10
+- SHIP_NOAA_002: 1 frames, split=Counter({'test': 1}), use=Counter({'hard_negative_eval': 1}), with_human=1
+- SHIP_NOAA_003: 1 frames, split=Counter({'test': 1}), use=Counter({'hard_negative_eval': 1}), with_human=0
+- SHIP_NOAA_004: 1 frames, split=Counter({'test': 1}), use=Counter({'hard_negative_eval': 1}), with_human=1
+
+주의: 본 데이터는 실제 해군 함정 CCTV가 아니라 공개자료 기반 ship-like proxy keyframe이다.

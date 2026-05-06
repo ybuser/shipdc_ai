@@ -72,3 +72,5 @@ configs/*.local.json
 
 # Keep repository placeholders
 !.gitkeep
+
+.venv_synth/

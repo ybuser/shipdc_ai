@@ -1,0 +1,6 @@
+﻿zone_l1,usable_frames,asset_count,with_human_frames,confuser_summary
+control_room,82,5,55,none:79; red_button:1; monitor:1; red_light:1
+engine_room,131,3,28,none:102; red_valve:11; red_machine:8; red_wall:7; red_clothes:3
+exterior_or_unknown,15,3,9,none:13; red_machine:2
+passageway_ladder,5,1,3,none:5
+service_maintenance_support,26,1,26,none:26
