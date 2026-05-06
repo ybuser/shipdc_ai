@@ -53,6 +53,7 @@ BACKGROUND_REQUIRED_COLUMNS = {
     "quality_flag",
 }
 DONOR_REQUIRED_COLUMNS = {"crop_id", "source_name", "crop_path", "class_name"}
+CSV_MANIFEST_ENCODING = "utf-8-sig"
 
 
 @dataclass(frozen=True)
@@ -199,6 +200,34 @@ def normalize_class_name(value: str) -> str:
     return value.strip().lower().replace("-", "_").replace(" ", "_")
 
 
+def normalize_csv_fieldname(value: str | None) -> str:
+    return (value or "").strip().lstrip("\ufeff").strip()
+
+
+def normalize_csv_reader_fieldnames(reader: csv.DictReader) -> tuple[list[str], list[str]]:
+    raw_fieldnames = list(reader.fieldnames or [])
+    normalized_fieldnames = [normalize_csv_fieldname(fieldname) for fieldname in raw_fieldnames]
+    reader.fieldnames = normalized_fieldnames
+    return raw_fieldnames, normalized_fieldnames
+
+
+def format_missing_columns_error(
+    source_name: str,
+    *,
+    missing: list[str],
+    required_columns: list[str],
+    normalized_actual_columns: list[str],
+    raw_actual_columns: list[str],
+) -> str:
+    normalized_actual = ", ".join(normalized_actual_columns) if normalized_actual_columns else "(none)"
+    return (
+        f"{source_name} missing required columns: {', '.join(missing)}; "
+        f"required columns: {', '.join(required_columns)}; "
+        f"normalized actual columns: {normalized_actual}; "
+        f"raw actual columns repr: {raw_actual_columns!r}"
+    )
+
+
 def string_contains_with_human(row: dict[str, str]) -> bool:
     notes = f"{row.get('reviewer_notes', '')} {row.get('review_note', '')}".lower()
     return "with_human" in notes
@@ -217,12 +246,21 @@ def load_backgrounds(path: Path, *, root: Path = ROOT) -> list[BackgroundFrame]:
     if not path.is_file():
         raise FileNotFoundError(f"background manifest does not exist: {path}")
 
-    with path.open("r", newline="", encoding="utf-8") as csv_file:
+    with path.open("r", newline="", encoding=CSV_MANIFEST_ENCODING) as csv_file:
         reader = csv.DictReader(csv_file)
-        fieldnames = set(reader.fieldnames or [])
-        missing = sorted(BACKGROUND_REQUIRED_COLUMNS - fieldnames)
+        raw_fieldnames, normalized_fieldnames = normalize_csv_reader_fieldnames(reader)
+        required_columns = sorted(BACKGROUND_REQUIRED_COLUMNS)
+        missing = [column for column in required_columns if column not in normalized_fieldnames]
         if missing:
-            raise ValueError(f"background manifest missing required columns: {', '.join(missing)}")
+            raise ValueError(
+                format_missing_columns_error(
+                    "background manifest",
+                    missing=missing,
+                    required_columns=required_columns,
+                    normalized_actual_columns=normalized_fieldnames,
+                    raw_actual_columns=raw_fieldnames,
+                )
+            )
         rows = list(reader)
 
     backgrounds: list[BackgroundFrame] = []
@@ -298,12 +336,21 @@ def load_donors(path: Path, *, class_ids: dict[str, int], root: Path = ROOT) -> 
     if not path.is_file():
         raise FileNotFoundError(f"donor crop manifest does not exist: {path}")
 
-    with path.open("r", newline="", encoding="utf-8") as csv_file:
+    with path.open("r", newline="", encoding=CSV_MANIFEST_ENCODING) as csv_file:
         reader = csv.DictReader(csv_file)
-        fieldnames = set(reader.fieldnames or [])
-        missing = sorted(DONOR_REQUIRED_COLUMNS - fieldnames)
+        raw_fieldnames, normalized_fieldnames = normalize_csv_reader_fieldnames(reader)
+        required_columns = sorted(DONOR_REQUIRED_COLUMNS)
+        missing = [column for column in required_columns if column not in normalized_fieldnames]
         if missing:
-            raise ValueError(f"donor manifest missing required columns: {', '.join(missing)}")
+            raise ValueError(
+                format_missing_columns_error(
+                    "donor manifest",
+                    missing=missing,
+                    required_columns=required_columns,
+                    normalized_actual_columns=normalized_fieldnames,
+                    raw_actual_columns=raw_fieldnames,
+                )
+            )
         rows = list(reader)
 
     donors: dict[str, list[DonorCrop]] = {class_name: [] for class_name in TARGET_CLASS_NAMES}

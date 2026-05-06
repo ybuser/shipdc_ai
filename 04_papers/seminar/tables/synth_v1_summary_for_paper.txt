@@ -1,0 +1,20 @@
+Synthetic v1 summary for seminar paper
+
+Total synthetic samples: 170
+
+Class counts:
+- fire: 85
+- smoke: 85
+
+Background zone counts:
+- engine_room: 170
+
+Background asset counts:
+- SHIP_DVIDS_001: 170
+
+Donor source counts:
+- CQU_FireSmokeYOLO: 87
+- DFire: 83
+
+Public-data-only statement: synthetic v1 uses public ship-like background frames and public fire/smoke donor crops only.
+Claim boundary: these samples are synthetic positive proxies for preliminary data preparation, not real shipboard positive labels and not real naval CCTV validation.

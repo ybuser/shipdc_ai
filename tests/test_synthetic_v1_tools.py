@@ -19,6 +19,7 @@ from scripts.build_synth_v1 import (  # noqa: E402
     build_generation_schedule,
     hash_file,
     load_backgrounds,
+    load_donors,
     parse_args,
     resolve_build_options,
     run_build_synth_v1,
@@ -185,6 +186,35 @@ class SyntheticV1ToolsTest(TestCase):
             backgrounds = load_backgrounds(manifest, root=root)
 
         self.assertEqual([background.frame_id for background in backgrounds], ["keep"])
+
+    def test_background_manifest_accepts_bom_prefixed_frame_id_header(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            frame = root / "02_processed" / "frames" / "good.jpg"
+            frame.parent.mkdir(parents=True)
+            frame.write_bytes(PNG_1X1)
+            manifest = root / "02_processed" / "manifests" / "ship_like_background_train.csv"
+            row = background_row("bg_bom", "02_processed/frames/good.jpg")
+            row["\ufeffframe_id"] = row.pop("frame_id")
+            row[" asset_id "] = row.pop("asset_id")
+            write_csv(manifest, ["\ufeffframe_id", " asset_id ", *BACKGROUND_HEADER[2:]], [row])
+
+            backgrounds = load_backgrounds(manifest, root=root)
+
+        self.assertEqual([background.frame_id for background in backgrounds], ["bg_bom"])
+
+    def test_donor_manifest_accepts_bom_prefixed_crop_id_header(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            manifest = root / "02_processed" / "manifests" / "donor_crop_manifest_v1.csv"
+            row = donor_row("crop_bom", "02_processed/crops/fire.png", "fire")
+            row["\ufeffcrop_id"] = row.pop("crop_id")
+            row[" source_name "] = row.pop("source_name")
+            write_csv(manifest, ["\ufeffcrop_id", " source_name ", *DONOR_HEADER[2:]], [row])
+
+            donors = load_donors(manifest, class_ids={"fire": 0, "smoke": 1}, root=root)
+
+        self.assertEqual([donor.crop_id for donor in donors["fire"]], ["crop_bom"])
 
     def test_generation_schedule_balances_classes_before_repeating_backgrounds(self) -> None:
         backgrounds = [

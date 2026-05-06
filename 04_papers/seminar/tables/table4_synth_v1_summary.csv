@@ -1,0 +1,8 @@
+section,name,count
+total,synthetic_samples,170
+class_name,fire,85
+class_name,smoke,85
+background_zone_l1,engine_room,170
+background_asset_id,SHIP_DVIDS_001,170
+donor_source_name,CQU_FireSmokeYOLO,87
+donor_source_name,DFire,83

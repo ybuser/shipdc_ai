@@ -1,4 +1,4 @@
-frame_id,asset_id,source_name,frame_path,timestamp_s,frame_index,width,height,zone_l1,confuser_tags,use_purpose,split,quality_flag,reviewer_notes,sha256
+﻿frame_id,asset_id,source_name,frame_path,timestamp_s,frame_index,width,height,zone_l1,confuser_tags,use_purpose,split,quality_flag,reviewer_notes,sha256
 SHIP_DVIDS_001_3ae00312b85040ce,SHIP_DVIDS_001,DVIDS,02_processed/frames/ship_like/DVIDS/20260426/SHIP_DVIDS_001/frame_000000.jpg,0,0,854,480,exterior_or_unknown,none,exclude,exclude,exclude,,14513d961985b1de2648b89e0ca8d3f481f93ee9860ad6c61fd7011d87345e8d
 SHIP_DVIDS_001_17570aa84b84a2cf,SHIP_DVIDS_001,DVIDS,02_processed/frames/ship_like/DVIDS/20260426/SHIP_DVIDS_001/frame_000001.jpg,1,1,854,480,exterior_or_unknown,none,exclude,exclude,exclude,,0c342af1b7b1e17bb12be597422144529448b8a07ad8d1ca1e23d226ef78e730
 SHIP_DVIDS_001_9a878d3a3b40e2ee,SHIP_DVIDS_001,DVIDS,02_processed/frames/ship_like/DVIDS/20260426/SHIP_DVIDS_001/frame_000002.jpg,2,2,854,480,exterior_or_unknown,none,exclude,exclude,exclude,,ba1813d756c82ecf32f43bcbbacae75212a50d00383fde32dbab4e367b988c68

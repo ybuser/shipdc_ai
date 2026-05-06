@@ -14,7 +14,13 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from build_synth_v1 import SYNTH_MANIFEST_HEADER, resolve_cli_path  # noqa: E402
+from build_synth_v1 import (  # noqa: E402
+    CSV_MANIFEST_ENCODING,
+    SYNTH_MANIFEST_HEADER,
+    format_missing_columns_error,
+    normalize_csv_reader_fieldnames,
+    resolve_cli_path,
+)
 
 
 SUMMARY_CSV = "table4_synth_v1_summary.csv"
@@ -24,12 +30,20 @@ SUMMARY_TXT = "synth_v1_summary_for_paper.txt"
 def load_manifest_rows(path: Path) -> list[dict[str, str]]:
     if not path.is_file():
         raise FileNotFoundError(f"manifest does not exist: {path}")
-    with path.open("r", newline="", encoding="utf-8") as csv_file:
+    with path.open("r", newline="", encoding=CSV_MANIFEST_ENCODING) as csv_file:
         reader = csv.DictReader(csv_file)
-        fieldnames = reader.fieldnames or []
-        missing = [column for column in SYNTH_MANIFEST_HEADER if column not in fieldnames]
+        raw_fieldnames, normalized_fieldnames = normalize_csv_reader_fieldnames(reader)
+        missing = [column for column in SYNTH_MANIFEST_HEADER if column not in normalized_fieldnames]
         if missing:
-            raise ValueError(f"manifest missing required columns: {', '.join(missing)}")
+            raise ValueError(
+                format_missing_columns_error(
+                    "manifest",
+                    missing=missing,
+                    required_columns=SYNTH_MANIFEST_HEADER,
+                    normalized_actual_columns=normalized_fieldnames,
+                    raw_actual_columns=raw_fieldnames,
+                )
+            )
         return list(reader)
 
 

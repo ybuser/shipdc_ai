@@ -19,9 +19,12 @@ if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
 from build_synth_v1 import (  # noqa: E402
+    CSV_MANIFEST_ENCODING,
     DEFAULT_CLASS_IDS,
     SYNTH_MANIFEST_HEADER,
+    format_missing_columns_error,
     hash_file,
+    normalize_csv_reader_fieldnames,
     normalize_repo_relative,
     resolve_cli_path,
 )
@@ -117,12 +120,20 @@ def validate_synth_manifest(path: Path, *, root: Path = ROOT) -> SynthManifestVa
         result.errors.append(f"manifest does not exist: {path}")
         return result
 
-    with path.open("r", newline="", encoding="utf-8") as csv_file:
+    with path.open("r", newline="", encoding=CSV_MANIFEST_ENCODING) as csv_file:
         reader = csv.DictReader(csv_file)
-        fieldnames = reader.fieldnames or []
-        missing = [column for column in SYNTH_MANIFEST_HEADER if column not in fieldnames]
+        raw_fieldnames, normalized_fieldnames = normalize_csv_reader_fieldnames(reader)
+        missing = [column for column in SYNTH_MANIFEST_HEADER if column not in normalized_fieldnames]
         if missing:
-            result.errors.append(f"manifest missing required columns: {', '.join(missing)}")
+            result.errors.append(
+                format_missing_columns_error(
+                    "manifest",
+                    missing=missing,
+                    required_columns=SYNTH_MANIFEST_HEADER,
+                    normalized_actual_columns=normalized_fieldnames,
+                    raw_actual_columns=raw_fieldnames,
+                )
+            )
             return result
         rows = list(reader)
 
