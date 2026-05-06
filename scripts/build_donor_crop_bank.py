@@ -97,6 +97,13 @@ class CropBuildSummary:
     skip_notes: list[str] = field(default_factory=list)
 
 
+@dataclass(frozen=True)
+class CliOutputPaths:
+    output_images_dir: Path | None
+    preview_dir: Path | None
+    output_manifest: Path | None
+
+
 def positive_int(value: str) -> int:
     parsed = int(value)
     if parsed <= 0:
@@ -108,6 +115,23 @@ def resolve_cli_path(path: Path, root: Path) -> Path:
     if path.is_absolute():
         return path
     return root / path
+
+
+def resolve_cli_output_paths(args: argparse.Namespace, root: Path) -> CliOutputPaths:
+    output_images_dir = resolve_cli_path(args.output_images, root) if args.output_images else None
+    preview_dir = resolve_cli_path(args.preview_dir, root) if args.preview_dir else None
+    if args.out_dir:
+        out_dir = resolve_cli_path(args.out_dir, root)
+        if output_images_dir is None:
+            output_images_dir = out_dir / "images"
+        if preview_dir is None:
+            preview_dir = out_dir / "preview"
+    output_manifest = resolve_cli_path(args.output_manifest, root) if args.output_manifest else None
+    return CliOutputPaths(
+        output_images_dir=output_images_dir,
+        preview_dir=preview_dir,
+        output_manifest=output_manifest,
+    )
 
 
 def load_config(path: Path) -> dict[str, Any]:
@@ -772,9 +796,20 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Donor crop config JSON path.",
     )
     parser.add_argument("--manifest", type=Path, help="Override master manifest CSV path.")
+    parser.add_argument(
+        "--out-dir",
+        type=Path,
+        help="Convenience output root. Supplies images/ and preview/ unless explicit output dirs are provided.",
+    )
     parser.add_argument("--output-images", type=Path, help="Override crop image output directory.")
     parser.add_argument("--preview-dir", type=Path, help="Override preview output directory.")
-    parser.add_argument("--output-manifest", type=Path, help="Override donor crop manifest CSV path.")
+    parser.add_argument(
+        "--output-manifest",
+        "--out-manifest",
+        dest="output_manifest",
+        type=Path,
+        help="Override donor crop manifest CSV path.",
+    )
     parser.add_argument(
         "--source",
         action="append",
@@ -791,13 +826,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    output_paths = resolve_cli_output_paths(args, ROOT)
     try:
         summary = run_build_crop_bank(
             config_path=resolve_cli_path(args.config, ROOT),
             manifest_path=resolve_cli_path(args.manifest, ROOT) if args.manifest else None,
-            output_images_dir=resolve_cli_path(args.output_images, ROOT) if args.output_images else None,
-            preview_dir=resolve_cli_path(args.preview_dir, ROOT) if args.preview_dir else None,
-            output_manifest=resolve_cli_path(args.output_manifest, ROOT) if args.output_manifest else None,
+            output_images_dir=output_paths.output_images_dir,
+            preview_dir=output_paths.preview_dir,
+            output_manifest=output_paths.output_manifest,
             selected_sources=set(args.source) if args.source else None,
             max_crops_per_source=args.max_crops_per_source,
             overwrite=args.overwrite,

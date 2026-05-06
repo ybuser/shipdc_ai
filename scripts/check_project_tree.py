@@ -57,6 +57,7 @@ REQUIRED_FILES = [
     "configs/paths.example.json",
     "configs/cameras.example.json",
     "configs/temporal_rules.example.json",
+    "configs/synth_v1.json",
     "docs/PROJECT_CONTEXT.md",
     "docs/DATA_ACQUISITION_GUIDE.md",
     "docs/MANIFEST_SPEC.md",
@@ -65,6 +66,7 @@ REQUIRED_FILES = [
     "docs/keyframe_extraction.md",
     "docs/ship_like_tagging.md",
     "docs/donor_crop_bank.md",
+    "docs/synthetic_v1.md",
     "configs/donor_crop_v1.json",
     "02_processed/manifests/master_manifest.csv",
     "02_processed/manifests/README.md",
@@ -79,6 +81,9 @@ REQUIRED_FILES = [
     "scripts/inspect_donor_label_sources.py",
     "scripts/build_donor_crop_bank.py",
     "scripts/validate_donor_crop_manifest.py",
+    "scripts/build_synth_v1.py",
+    "scripts/validate_synth_manifest.py",
+    "scripts/summarize_synth_v1.py",
     "scripts/hash_files.py",
     "src/shipdc_ai/__init__.py",
     "src/shipdc_ai/manifest.py",
@@ -93,6 +98,7 @@ REQUIRED_FILES = [
     "tests/test_keyframe_tooling.py",
     "tests/test_ship_like_tagging_tools.py",
     "tests/test_donor_crop_bank_tools.py",
+    "tests/test_synthetic_v1_tools.py",
 ]
 
 GITKEEP_FILES = [

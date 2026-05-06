@@ -54,22 +54,38 @@ Inspection reports master-manifest donor rows, rights notes, split image/label c
 
 ## Build Crops
 
+The examples below spell out output locations with the preferred explicit options. Omitting them uses the same defaults from `configs/donor_crop_v1.json`.
+
 Full build:
 
 ```powershell
-python scripts/build_donor_crop_bank.py --overwrite
+python scripts/build_donor_crop_bank.py `
+  --output-images "02_processed/crops/fire_smoke_donor_v1/images" `
+  --preview-dir "02_processed/crops/fire_smoke_donor_v1/preview" `
+  --output-manifest "02_processed/manifests/donor_crop_manifest_v1.csv" `
+  --overwrite
 ```
 
 Small smoke-test build:
 
 ```powershell
-python scripts/build_donor_crop_bank.py --max-crops-per-source 10 --overwrite
+python scripts/build_donor_crop_bank.py `
+  --max-crops-per-source 10 `
+  --output-images "02_processed/crops/fire_smoke_donor_v1/images" `
+  --preview-dir "02_processed/crops/fire_smoke_donor_v1/preview" `
+  --output-manifest "02_processed/manifests/donor_crop_manifest_v1.csv" `
+  --overwrite
 ```
 
 Build one source:
 
 ```powershell
-python scripts/build_donor_crop_bank.py --source DFire --overwrite
+python scripts/build_donor_crop_bank.py `
+  --source DFire `
+  --output-images "02_processed/crops/fire_smoke_donor_v1/images" `
+  --preview-dir "02_processed/crops/fire_smoke_donor_v1/preview" `
+  --output-manifest "02_processed/manifests/donor_crop_manifest_v1.csv" `
+  --overwrite
 ```
 
 Selecting `IndoorFireSmoke` without first adding a verified `class_map` will fail clearly.

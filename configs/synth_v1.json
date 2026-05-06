@@ -1,0 +1,22 @@
+{
+  "background_manifest": "C:\\_code\\shipdc_ai\\02_processed\\manifests\\ship_like_background_train.csv",
+  "donor_manifest": "C:\\_code\\shipdc_ai\\02_processed\\manifests\\donor_crop_manifest_v1.csv",
+  "output_dir": "C:\\_code\\shipdc_ai\\02_processed\\synth\\v1",
+  "output_manifest": "C:\\_code\\shipdc_ai\\02_processed\\manifests\\synth_v1_manifest.csv",
+  "max_samples_total": 170,
+  "preview_count": 50,
+  "seed": 20260426,
+  "class_ids": {
+    "fire": 0,
+    "smoke": 1
+  },
+  "min_scale": 0.12,
+  "max_scale": 0.42,
+  "opacity_min": 0.55,
+  "opacity_max": 0.90,
+  "blur_radius_min": 0.0,
+  "blur_radius_max": 1.2,
+  "avoid_edge_margin_ratio": 0.08,
+  "min_bbox_width_px": 12,
+  "min_bbox_height_px": 12
+}

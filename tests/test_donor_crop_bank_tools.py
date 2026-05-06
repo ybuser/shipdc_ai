@@ -21,6 +21,8 @@ from scripts.build_donor_crop_bank import (  # noqa: E402
     class_map_from_source_config,
     convert_yolo_box,
     hash_file,
+    parse_args,
+    resolve_cli_output_paths,
     run_build_crop_bank,
 )
 from scripts.validate_donor_crop_manifest import validate_donor_crop_manifest  # noqa: E402
@@ -59,6 +61,69 @@ def donor_master_row(source_name: str) -> dict[str, str]:
 
 
 class DonorCropBankToolsTest(TestCase):
+    def test_cli_explicit_output_options_resolve(self) -> None:
+        root = Path("repo")
+        args = parse_args(
+            [
+                "--output-images",
+                "custom/images",
+                "--preview-dir",
+                "custom/preview",
+                "--output-manifest",
+                "custom/donor_crop_manifest.csv",
+            ]
+        )
+
+        output_paths = resolve_cli_output_paths(args, root)
+
+        self.assertEqual(output_paths.output_images_dir, root / "custom/images")
+        self.assertEqual(output_paths.preview_dir, root / "custom/preview")
+        self.assertEqual(output_paths.output_manifest, root / "custom/donor_crop_manifest.csv")
+
+    def test_cli_out_dir_and_out_manifest_aliases_resolve(self) -> None:
+        root = Path("repo")
+        args = parse_args(
+            [
+                "--out-dir",
+                "02_processed/crops/fire_smoke_donor_v1",
+                "--out-manifest",
+                "02_processed/manifests/donor_crop_manifest_v1.csv",
+            ]
+        )
+
+        output_paths = resolve_cli_output_paths(args, root)
+
+        self.assertEqual(
+            output_paths.output_images_dir,
+            root / "02_processed/crops/fire_smoke_donor_v1/images",
+        )
+        self.assertEqual(
+            output_paths.preview_dir,
+            root / "02_processed/crops/fire_smoke_donor_v1/preview",
+        )
+        self.assertEqual(
+            output_paths.output_manifest,
+            root / "02_processed/manifests/donor_crop_manifest_v1.csv",
+        )
+
+    def test_cli_out_dir_does_not_override_explicit_output_dirs(self) -> None:
+        root = Path("repo")
+        args = parse_args(
+            [
+                "--out-dir",
+                "derived/root",
+                "--output-images",
+                "explicit/images",
+                "--preview-dir",
+                "explicit/preview",
+            ]
+        )
+
+        output_paths = resolve_cli_output_paths(args, root)
+
+        self.assertEqual(output_paths.output_images_dir, root / "explicit/images")
+        self.assertEqual(output_paths.preview_dir, root / "explicit/preview")
+
     def test_unknown_numeric_metadata_class_map_fails_clearly(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
