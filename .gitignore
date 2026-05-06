@@ -82,3 +82,5 @@ configs/*.local.json
 !.gitkeep
 
 .venv_synth/
+.venv_train/
+configs/nvr_4stream_fast.json

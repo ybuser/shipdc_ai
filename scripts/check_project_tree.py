@@ -67,6 +67,7 @@ REQUIRED_FILES = [
     "docs/ship_like_tagging.md",
     "docs/donor_crop_bank.md",
     "docs/synthetic_v1.md",
+    "docs/fast_detector_and_runtime.md",
     "configs/donor_crop_v1.json",
     "02_processed/manifests/master_manifest.csv",
     "02_processed/manifests/README.md",
@@ -84,6 +85,11 @@ REQUIRED_FILES = [
     "scripts/build_synth_v1.py",
     "scripts/validate_synth_manifest.py",
     "scripts/summarize_synth_v1.py",
+    "scripts/build_fast_detector_dataset.py",
+    "scripts/summarize_yolo_predictions.py",
+    "scripts/build_runtime_mp4_inputs.py",
+    "scripts/run_fast_4stream_nvr.py",
+    "scripts/summarize_fast_nvr_run.py",
     "scripts/hash_files.py",
     "src/shipdc_ai/__init__.py",
     "src/shipdc_ai/manifest.py",
@@ -99,6 +105,7 @@ REQUIRED_FILES = [
     "tests/test_ship_like_tagging_tools.py",
     "tests/test_donor_crop_bank_tools.py",
     "tests/test_synthetic_v1_tools.py",
+    "tests/test_fast_detector_dataset_tools.py",
 ]
 
 GITKEEP_FILES = [
