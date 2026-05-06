@@ -1,0 +1,68 @@
+{
+  "version": "donor_crop_v1",
+  "purpose": "Build a public donor fire/smoke crop bank for synthetic v1 data preparation.",
+  "master_manifest": "02_processed/manifests/master_manifest.csv",
+  "output_images_dir": "02_processed/crops/fire_smoke_donor_v1/images",
+  "preview_dir": "02_processed/crops/fire_smoke_donor_v1/preview",
+  "output_manifest": "02_processed/manifests/donor_crop_manifest_v1.csv",
+  "label_format": "yolo_normalized",
+  "normalized_classes": [
+    "fire",
+    "smoke"
+  ],
+  "min_crop_width": 16,
+  "min_crop_height": 16,
+  "preview_max_per_class": 50,
+  "preview_size_px": 192,
+  "sources": [
+    {
+      "source_name": "DFire",
+      "enabled": true,
+      "root": "01_raw/01_donor/DFire/unzipped/images_labels",
+      "splits": [
+        "train",
+        "test"
+      ],
+      "image_dir_name": "images",
+      "label_dir_name": "labels",
+      "class_map": {
+        "0": "smoke",
+        "1": "fire"
+      },
+      "class_map_note": "D-Fire original YOLO ids are smoke=0 and fire=1. Keep this explicit because no local data.yaml is shipped with the extracted archive."
+    },
+    {
+      "source_name": "CQU_FireSmokeYOLO",
+      "enabled": true,
+      "root": "01_raw/01_donor/CQU_FireSmokeYOLO/unzipped",
+      "splits": [
+        "train",
+        "valid",
+        "test"
+      ],
+      "image_dir_name": "images",
+      "label_dir_name": "labels",
+      "metadata_names_file": "data.yaml",
+      "class_map": {
+        "0": "fire",
+        "1": "smoke"
+      },
+      "class_map_note": "Local data.yaml names are ['fire', 'smoke']; mapping is kept explicit for reproducibility."
+    },
+    {
+      "source_name": "IndoorFireSmoke",
+      "enabled": false,
+      "root": "01_raw/01_donor/IndoorFireSmoke/unzipped/Indoor Fire Smoke",
+      "splits": [
+        "train",
+        "valid",
+        "test"
+      ],
+      "image_dir_name": "images",
+      "label_dir_name": "labels",
+      "metadata_names_file": "data.yaml",
+      "class_map": {},
+      "class_map_note": "BBox labels are present in the Zenodo archive, but the local data.yaml uses numeric names ['0', '1']. Enable only after verifying which id is fire and which id is smoke."
+    }
+  ]
+}

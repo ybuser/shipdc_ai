@@ -27,14 +27,18 @@ configs/*.local.json
 # Generated processed data
 02_processed/frames/**/*
 02_processed/labels/**/*
+02_processed/crops/**/*
 02_processed/synth_v1/**/*
 02_processed/hard_negative_v1/**/*
+02_processed/manifests/donor_crop_manifest_v1.csv
 !02_processed/frames/**/
 !02_processed/labels/**/
+!02_processed/crops/**/
 !02_processed/synth_v1/**/
 !02_processed/hard_negative_v1/**/
 !02_processed/frames/**/.gitkeep
 !02_processed/labels/**/.gitkeep
+!02_processed/crops/**/.gitkeep
 !02_processed/synth_v1/**/.gitkeep
 !02_processed/hard_negative_v1/**/.gitkeep
 

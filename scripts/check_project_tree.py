@@ -64,6 +64,8 @@ REQUIRED_FILES = [
     "docs/CLAIM_BOUNDARY.md",
     "docs/keyframe_extraction.md",
     "docs/ship_like_tagging.md",
+    "docs/donor_crop_bank.md",
+    "configs/donor_crop_v1.json",
     "02_processed/manifests/master_manifest.csv",
     "02_processed/manifests/README.md",
     "scripts/init_project_tree.py",
@@ -74,6 +76,9 @@ REQUIRED_FILES = [
     "scripts/validate_keyframe_manifest.py",
     "scripts/make_ship_like_tagging_sheet.py",
     "scripts/make_review_gallery.py",
+    "scripts/inspect_donor_label_sources.py",
+    "scripts/build_donor_crop_bank.py",
+    "scripts/validate_donor_crop_manifest.py",
     "scripts/hash_files.py",
     "src/shipdc_ai/__init__.py",
     "src/shipdc_ai/manifest.py",
@@ -87,6 +92,7 @@ REQUIRED_FILES = [
     "tests/test_imports.py",
     "tests/test_keyframe_tooling.py",
     "tests/test_ship_like_tagging_tools.py",
+    "tests/test_donor_crop_bank_tools.py",
 ]
 
 GITKEEP_FILES = [
