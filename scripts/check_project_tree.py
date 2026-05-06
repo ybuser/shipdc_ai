@@ -63,6 +63,7 @@ REQUIRED_FILES = [
     "docs/REPO_USAGE.md",
     "docs/CLAIM_BOUNDARY.md",
     "docs/keyframe_extraction.md",
+    "docs/ship_like_tagging.md",
     "02_processed/manifests/master_manifest.csv",
     "02_processed/manifests/README.md",
     "scripts/init_project_tree.py",
@@ -71,6 +72,8 @@ REQUIRED_FILES = [
     "scripts/validate_manifest.py",
     "scripts/extract_keyframes.py",
     "scripts/validate_keyframe_manifest.py",
+    "scripts/make_ship_like_tagging_sheet.py",
+    "scripts/make_review_gallery.py",
     "scripts/hash_files.py",
     "src/shipdc_ai/__init__.py",
     "src/shipdc_ai/manifest.py",
@@ -83,6 +86,7 @@ REQUIRED_FILES = [
     "tests/test_manifest_header.py",
     "tests/test_imports.py",
     "tests/test_keyframe_tooling.py",
+    "tests/test_ship_like_tagging_tools.py",
 ]
 
 GITKEEP_FILES = [
