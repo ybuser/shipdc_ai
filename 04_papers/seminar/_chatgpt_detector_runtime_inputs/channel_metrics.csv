@@ -1,0 +1,5 @@
+channel_id,display_name,expected_role,zone_l1,source_path,frames_processed,elapsed_wall_clock_s,analyzed_fps,predicted_frames,total_pred_boxes,alarm_count,first_alarm_timestamp_s,vid_stride,processing_mode
+ch01,Synthetic positive proxy,synth_positive,engine_room,03_experiments/runtime_inputs/seminar_4stream/ch01_synth_positive.mp4,60,2.330709,25.743237,55,79,1,0.500,1,sequential_channel_emulated_4stream
+ch02,Engine-room background,engine_background,engine_room,03_experiments/runtime_inputs/seminar_4stream/ch02_engine_background.mp4,60,2.063474,29.077179,1,1,0,,1,sequential_channel_emulated_4stream
+ch03,Hard-negative confuser,hard_negative_confuser,ship_like_eval,03_experiments/runtime_inputs/seminar_4stream/ch03_hard_negative_confuser.mp4,60,2.076364,28.896673,18,24,1,2.000,1,sequential_channel_emulated_4stream
+ch04,Validation background,val_background,ship_like_background,03_experiments/runtime_inputs/seminar_4stream/ch04_val_background.mp4,60,2.159164,27.788532,8,8,3,4.000,1,sequential_channel_emulated_4stream

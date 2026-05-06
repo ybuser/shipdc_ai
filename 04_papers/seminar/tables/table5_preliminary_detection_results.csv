@@ -1,0 +1,3 @@
+experiment,task,total_images,hit_images,hit_rate,fire_images,fire_hit_images,fire_hit_rate,smoke_images,smoke_hit_images,smoke_hit_rate,iou_threshold,conf_threshold,frames_with_prediction,total_pred_boxes,false_alarm_frame_rate
+synthetic_proxy_hit_rate,synthetic_proxy,34,20,0.588235,17,13,0.764706,17,7,0.411765,0.250000,0.250000,,,
+ship_like_hard_negative_false_alarm,hard_negative,127,,,,,,,,,,0.250000,85,145,0.669291

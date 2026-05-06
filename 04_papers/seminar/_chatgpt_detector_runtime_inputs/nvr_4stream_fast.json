@@ -1,0 +1,45 @@
+{
+  "name": "fast_4stream_public_proxy_emulator",
+  "generated_by": "scripts/build_runtime_mp4_inputs.py",
+  "public_data_only": true,
+  "emulator_note": "Four local MP4 files emulate NVR inputs for a preliminary seminar experiment; this is not real CCTV or RTSP.",
+  "seconds": 30.0,
+  "channels": [
+    {
+      "channel_id": "ch01",
+      "display_name": "Synthetic positive proxy",
+      "source_path": "03_experiments/runtime_inputs/seminar_4stream/ch01_synth_positive.mp4",
+      "expected_role": "synth_positive",
+      "zone_l1": "engine_room",
+      "fps": 2.0,
+      "enabled": true
+    },
+    {
+      "channel_id": "ch02",
+      "display_name": "Engine-room background",
+      "source_path": "03_experiments/runtime_inputs/seminar_4stream/ch02_engine_background.mp4",
+      "expected_role": "engine_background",
+      "zone_l1": "engine_room",
+      "fps": 2.0,
+      "enabled": true
+    },
+    {
+      "channel_id": "ch03",
+      "display_name": "Hard-negative confuser",
+      "source_path": "03_experiments/runtime_inputs/seminar_4stream/ch03_hard_negative_confuser.mp4",
+      "expected_role": "hard_negative_confuser",
+      "zone_l1": "ship_like_eval",
+      "fps": 2.0,
+      "enabled": true
+    },
+    {
+      "channel_id": "ch04",
+      "display_name": "Validation background",
+      "source_path": "03_experiments/runtime_inputs/seminar_4stream/ch04_val_background.mp4",
+      "expected_role": "val_background",
+      "zone_l1": "ship_like_background",
+      "fps": 2.0,
+      "enabled": true
+    }
+  ]
+}

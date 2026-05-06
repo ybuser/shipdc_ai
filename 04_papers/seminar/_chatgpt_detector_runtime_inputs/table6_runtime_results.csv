@@ -1,0 +1,6 @@
+scope,channel_id,display_name,expected_role,frames_processed,elapsed_wall_clock_s,analyzed_fps,predicted_frames,total_pred_boxes,alarm_count,first_alarm_timestamp_s,processing_mode,notes
+aggregate,all,All four MP4 emulator streams,mixed_public_proxy,240,8.633638,27.798247,82,112,5,,sequential_channel_emulated_4stream,public_mp4_emulator; CPU_ONNX_direction_for_paper
+channel,ch01,Synthetic positive proxy,synth_positive,60,2.330709,25.743237,55,79,1,0.500,sequential_channel_emulated_4stream,public_mp4_channel
+channel,ch02,Engine-room background,engine_background,60,2.063474,29.077179,1,1,0,,sequential_channel_emulated_4stream,public_mp4_channel
+channel,ch03,Hard-negative confuser,hard_negative_confuser,60,2.076364,28.896673,18,24,1,2.000,sequential_channel_emulated_4stream,public_mp4_channel
+channel,ch04,Validation background,val_background,60,2.159164,27.788532,8,8,3,4.000,sequential_channel_emulated_4stream,public_mp4_channel

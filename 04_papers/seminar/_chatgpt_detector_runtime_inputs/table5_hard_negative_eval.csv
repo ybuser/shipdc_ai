@@ -1,0 +1,2 @@
+task,total_images,frames_with_prediction,total_pred_boxes,false_alarm_frame_rate,conf_threshold
+hard_negative,127,85,145,0.669291,0.250000

@@ -1,0 +1,2 @@
+config_path,model_path,channel_count,elapsed_wall_clock_s,frames_processed,analyzed_fps,predicted_frames,total_pred_boxes,alarm_count,sample_fps,conf,temporal_k,temporal_window_s,device,processing_mode,notes
+configs/nvr_4stream_fast.json,C:\_code\shipdc_ai\03_experiments\models\fire_smoke_fast_v1.onnx,4,8.633638,240,27.798247,82,112,5,2.000000,0.250000,2,5.000000,cpu,sequential_channel_emulated_4stream,public_mp4_emulator; CPU_ONNX_direction_for_paper

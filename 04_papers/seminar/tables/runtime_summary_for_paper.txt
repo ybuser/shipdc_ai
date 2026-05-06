@@ -1,0 +1,21 @@
+Runtime summary for seminar paper
+
+Processing mode: sequential_channel_emulated_4stream
+Channels summarized: 4
+Frames processed: 240
+Elapsed wall-clock seconds: 8.633638
+Analyzed FPS: 27.798247
+Predicted frames: 82
+Alarm count: 5
+
+Interpretation boundary:
+- Four local MP4 files emulate an NVR-style input set; this is not real CCTV, RTSP, or operational shipboard validation.
+- The runtime direction reported in the paper remains CPU-only ONNX.
+- These generated run outputs live under experiment/log paths and should not be committed.
+- Results are preliminary public-data-only feasibility evidence, not a detector benchmark claim.
+
+Channel details:
+- ch01: role=synth_positive, frames=60, analyzed_fps=25.743237, alarms=1
+- ch02: role=engine_background, frames=60, analyzed_fps=29.077179, alarms=0
+- ch03: role=hard_negative_confuser, frames=60, analyzed_fps=28.896673, alarms=1
+- ch04: role=val_background, frames=60, analyzed_fps=27.788532, alarms=3

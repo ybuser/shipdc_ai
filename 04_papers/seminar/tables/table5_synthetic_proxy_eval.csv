@@ -1,0 +1,2 @@
+task,total_images,hit_images,hit_rate,fire_images,fire_hit_images,fire_hit_rate,smoke_images,smoke_hit_images,smoke_hit_rate,iou_threshold,conf_threshold
+synthetic_proxy,34,20,0.588235,17,13,0.764706,17,7,0.411765,0.250000,0.250000

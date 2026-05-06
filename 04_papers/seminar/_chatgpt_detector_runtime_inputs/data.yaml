@@ -1,0 +1,7 @@
+path: "C:/_code/shipdc_ai/03_experiments/detector_datasets/fire_smoke_fast_v1"
+train: "images/train"
+val: "images/val"
+test: "eval/synth_val/images"
+names:
+  0: "fire"
+  1: "smoke"

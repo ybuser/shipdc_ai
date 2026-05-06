@@ -1,0 +1,14 @@
+Fast detector dataset summary for seminar paper
+
+Dataset root: C:\_code\shipdc_ai\03_experiments\detector_datasets\fire_smoke_fast_v1
+Training images: 1838
+Validation images: 464
+Held-out synthetic proxy evaluation images: 34
+Hard-negative evaluation images: 127
+
+Class ids: fire=0, smoke=1.
+Donor crop positives use full-image proxy boxes (0.5 0.5 0.98 0.98), so they are useful for fast detector warm-start evidence only.
+Synthetic held-out validation uses public ship-like backgrounds with public donor fire/smoke overlays; it is not real shipboard positive evidence.
+Hard-negative frames are public ship-like proxy frames and are excluded from training.
+Generated detector datasets live under 03_experiments and are intentionally ignored by Git.
+Claim boundary: public-data-only preliminary feasibility, not a SOTA detector study and not real CCTV validation.
