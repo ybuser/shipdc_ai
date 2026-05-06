@@ -62,12 +62,15 @@ REQUIRED_FILES = [
     "docs/MANIFEST_SPEC.md",
     "docs/REPO_USAGE.md",
     "docs/CLAIM_BOUNDARY.md",
+    "docs/keyframe_extraction.md",
     "02_processed/manifests/master_manifest.csv",
     "02_processed/manifests/README.md",
     "scripts/init_project_tree.py",
     "scripts/check_project_tree.py",
     "scripts/add_manifest_row.py",
     "scripts/validate_manifest.py",
+    "scripts/extract_keyframes.py",
+    "scripts/validate_keyframe_manifest.py",
     "scripts/hash_files.py",
     "src/shipdc_ai/__init__.py",
     "src/shipdc_ai/manifest.py",
@@ -79,6 +82,7 @@ REQUIRED_FILES = [
     "src/shipdc_ai/event_store.py",
     "tests/test_manifest_header.py",
     "tests/test_imports.py",
+    "tests/test_keyframe_tooling.py",
 ]
 
 GITKEEP_FILES = [
